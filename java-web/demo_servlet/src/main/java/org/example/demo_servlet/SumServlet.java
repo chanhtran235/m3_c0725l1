@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "SumServlet", value = "/sum")
 public class SumServlet extends HttpServlet {
@@ -23,7 +24,8 @@ public class SumServlet extends HttpServlet {
         int n1 = Integer.parseInt(req.getParameter("n1"));
         int n2 = Integer.parseInt(req.getParameter("n2"));
         int sum = n1+n2;
-        req.setAttribute("tong",sum);
+        List<String> list = List.of("Honda","Yamaha","Vinfas");
+        req.setAttribute("list",list);
         req.getRequestDispatcher("/form-sum.jsp").forward(req,resp);
 
     }

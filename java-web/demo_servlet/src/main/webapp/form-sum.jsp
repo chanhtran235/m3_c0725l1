@@ -10,6 +10,6 @@
     <input name="n2">
     <button>Tính tổng </button>
 </form>
-<h1>Kết quả là : ${tong}</h1>
+<h1>Kết quả là :</h1>
 </body>
 </html>
