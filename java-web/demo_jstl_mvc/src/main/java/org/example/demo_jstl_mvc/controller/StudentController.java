@@ -45,21 +45,39 @@ public class StudentController extends HttpServlet {
         }
         switch (action){
             case "add":
-                int id = Integer.parseInt(req.getParameter("id"));
-                String name= req.getParameter("name");
-                boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
-                float score = Float.parseFloat(req.getParameter("score"));
-                Student student = new Student(id,name,gender,score);
-                boolean isAddSuccess = studentService.add(student);
-                String mess = isAddSuccess?"Thanh cong":"That bai";
-                resp.sendRedirect("/student?mess="+mess);
-
+                save(req,resp);
                 break;
             case "delete":
+                deleteById(req,resp);
                 break;
             default:
 
 
+        }
+    }
+
+    private void deleteById(HttpServletRequest req, HttpServletResponse resp) {
+        int deleteId = Integer.parseInt(req.getParameter("deleteId"));
+       boolean isDelete= studentService.deleteById(deleteId);
+        try {
+            resp.sendRedirect("/student");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void save(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name= req.getParameter("name");
+        boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
+        float score = Float.parseFloat(req.getParameter("score"));
+        Student student = new Student(id,name,gender,score);
+        boolean isAddSuccess = studentService.add(student);
+        String mess = isAddSuccess?"Thanh cong":"That bai";
+        try {
+            resp.sendRedirect("/student?mess="+mess);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -25,4 +25,15 @@ public class StudentRepository implements IStudentRepository {
         studentList.add(student);
         return true;
     }
+
+    @Override
+    public boolean deleteById(int id) {
+        for (int i = 0; i <studentList.size() ; i++) {
+            if (studentList.get(i).getId()==id){
+                studentList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }
