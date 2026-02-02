@@ -8,10 +8,12 @@
 <body>
 <c:import url="../layout/my-navbar.jsp"/>
 <form action="/student?action=add" method="post">
-    <input name="id"><br>
-    <input name="name"><br>
+    Tên
+    <input name="name" placeholder="Nhập tên"><br>
+    Giới tính
     <input type="radio" name="gender" value="true">Nam
     <input type="radio" name="gender" value="false"> Nữ <br>
+    Đểm
     <input name="score"><br>
     <button>Thêm mới</button>
 </form>

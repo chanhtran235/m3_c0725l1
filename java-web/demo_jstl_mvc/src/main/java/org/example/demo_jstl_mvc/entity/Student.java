@@ -8,7 +8,11 @@ public class Student {
 
     public Student() {
     }
-
+    public Student(String name, boolean gender, float score) {
+        this.name = name;
+        this.gender = gender;
+        this.score = score;
+    }
     public Student(int id, String name, boolean gender, float score) {
         this.id = id;
         this.name = name;

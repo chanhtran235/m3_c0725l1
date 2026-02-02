@@ -67,11 +67,10 @@ public class StudentController extends HttpServlet {
     }
 
     private void save(HttpServletRequest req, HttpServletResponse resp) {
-        int id = Integer.parseInt(req.getParameter("id"));
         String name= req.getParameter("name");
         boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
         float score = Float.parseFloat(req.getParameter("score"));
-        Student student = new Student(id,name,gender,score);
+        Student student = new Student(name,gender,score);
         boolean isAddSuccess = studentService.add(student);
         String mess = isAddSuccess?"Thanh cong":"That bai";
         try {
