@@ -10,6 +10,18 @@
 <h1>Danh sách sinh viên</h1>
     <span>${param.mess}</span>
 <a href="/student?action=add">Thêm mới</a>
+<form action="/student" method="get">
+    <input name="action" value="search" hidden="">
+    <input name="searchName" placeholder="Nhập tên ........" value="${searchName}">
+    <select name="classId">
+        <option value="0">--Chọn lớp--</option>
+        <c:forEach items="${classList}" var="cls">
+            <option value="${cls.getId()}">${cls.getName()}</option>
+        </c:forEach>
+    </select>
+    <button>Tìm kiếm</button>
+
+</form>
 <table class="table table-dark table-striped">
     <tr>
         <th>STT</th>
@@ -18,6 +30,7 @@
         <th>Giới tính</th>
         <th>Điểm</th>
         <th> Xếp loại </th>
+        <th> Lớp </th>
         <th>Xoá</th>
     </tr>
     <c:forEach items="${studentList}" var="student" varStatus="status">
@@ -50,6 +63,7 @@
                 </c:otherwise>
             </c:choose>
         </td>
+            <td>${student.getClassName()}</td>
         <td>
             <!-- Button trigger modal -->
             <button onclick="getInfoDelete('${student.getId()}','${student.getName()}')" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">

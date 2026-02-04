@@ -13,7 +13,9 @@
    <c:import url="layout/library.jsp"/>
 </head>
 <body>
+
 <c:import url="layout/my-navbar.jsp"/>
 <h1>Đây là trang home</h1>
+
 </body>
 </html>
